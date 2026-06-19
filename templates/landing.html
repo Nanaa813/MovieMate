@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}MovieMate - Rekomendasi Film{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-card">
+        <span class="badge">Cloud Movie Recommendation</span>
+
+        <h1>Temukan film terbaik dengan MovieMate</h1>
+
+        <p>
+            MovieMate membantu kamu menemukan film populer, mencari film berdasarkan judul,
+            melihat detail film, dan menyimpan film favorit ke watchlist.
+        </p>
+
+        <div class="hero-actions">
+            <a href="{{ url_for('register') }}" class="btn-primary large">Mulai Sekarang</a>
+            <a href="{{ url_for('login') }}" class="btn-outline large">Login</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="section-header">
+        <h2>Fitur Utama</h2>
+        <p>Aplikasi film berbasis cloud dengan integrasi TMDB API.</p>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Film Populer</h3>
+            <p>Menampilkan daftar film populer secara real-time dari TMDB API.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Pencarian Film</h3>
+            <p>Cari film berdasarkan judul dan lihat hasilnya langsung di dashboard.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Detail Film</h3>
+            <p>Lihat poster, rating, tanggal rilis, dan sinopsis film.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Watchlist</h3>
+            <p>Simpan film favorit agar mudah ditemukan kembali.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

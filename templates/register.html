@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Register - MovieMate{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card">
+        <span class="badge">Buat Akun</span>
+        <h1>Daftar MovieMate</h1>
+        <p>Buat akun untuk menyimpan film favorit ke watchlist.</p>
+
+        <form method="POST" class="auth-form">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Masukkan username" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Masukkan email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Masukkan password" required>
+
+            <button type="submit" class="btn-primary full">Daftar</button>
+        </form>
+
+        <p class="auth-link">
+            Sudah punya akun?
+            <a href="{{ url_for('login') }}">Login di sini</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

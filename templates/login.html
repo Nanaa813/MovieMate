@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Login - MovieMate{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card">
+        <span class="badge">Masuk Akun</span>
+        <h1>Login ke MovieMate</h1>
+        <p>Akses dashboard film, pencarian, dan watchlist kamu.</p>
+
+        <form method="POST" class="auth-form">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Masukkan email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Masukkan password" required>
+
+            <button type="submit" class="btn-primary full">Login</button>
+        </form>
+
+        <p class="auth-link">
+            Belum punya akun?
+            <a href="{{ url_for('register') }}">Daftar sekarang</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

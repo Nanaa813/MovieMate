@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Harga - MovieMate{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <span class="badge">Paket Layanan</span>
+    <h1>Pilih paket MovieMate</h1>
+    <p>Landing page harga untuk konsep layanan rekomendasi film berbasis cloud.</p>
+</section>
+
+<section class="pricing-grid">
+    <div class="price-card">
+        <h3>Basic</h3>
+        <p class="price">Rp 0</p>
+        <p>Cocok untuk pengguna baru.</p>
+        <ul>
+            <li>Melihat film populer</li>
+            <li>Mencari film</li>
+            <li>Detail film</li>
+        </ul>
+        <a href="{{ url_for('register') }}" class="btn-outline full">Mulai</a>
+    </div>
+
+    <div class="price-card highlight">
+        <h3>Premium</h3>
+        <p class="price">Rp 15.000/bulan</p>
+        <p>Cocok untuk pengguna aktif.</p>
+        <ul>
+            <li>Semua fitur Basic</li>
+            <li>Watchlist pribadi</li>
+            <li>Rekomendasi film populer</li>
+        </ul>
+        <a href="{{ url_for('register') }}" class="btn-primary full">Pilih Premium</a>
+    </div>
+
+    <div class="price-card">
+        <h3>Team</h3>
+        <p class="price">Rp 49.000/bulan</p>
+        <p>Cocok untuk komunitas film.</p>
+        <ul>
+            <li>Semua fitur Premium</li>
+            <li>Akses multi-user</li>
+            <li>Dashboard komunitas</li>
+        </ul>
+        <a href="{{ url_for('register') }}" class="btn-outline full">Pilih Team</a>
+    </div>
+</section>
+{% endblock %}

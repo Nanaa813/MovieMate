@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Watchlist - MovieMate{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <span class="badge">Watchlist</span>
+    <h1>Film Favorit Kamu</h1>
+    <p>Daftar film yang kamu simpan untuk ditonton nanti.</p>
+</section>
+
+<section class="movie-grid">
+    {% for movie in movies %}
+    <article class="movie-card">
+        <div class="poster">
+            {% if movie.poster_path %}
+                <img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+            {% else %}
+                <div class="no-poster">No Poster</div>
+            {% endif %}
+
+            <div class="rating">⭐ {{ "%.1f"|format(movie.vote_average or 0) }}</div>
+        </div>
+
+        <div class="movie-info">
+            <h3>{{ movie.title }}</h3>
+            <p class="meta">Rilis: {{ movie.release_date if movie.release_date else "Belum tersedia" }}</p>
+
+            <div class="card-actions">
+                <a href="{{ url_for('detail', movie_id=movie.movie_id) }}" class="btn-outline small">Detail</a>
+                <a href="{{ url_for('delete_watchlist', item_id=movie.id) }}" class="btn-danger small">Hapus</a>
+            </div>
+        </div>
+    </article>
+    {% else %}
+    <div class="empty-state">
+        <h2>Watchlist masih kosong</h2>
+        <p>Cari film di dashboard lalu tambahkan ke watchlist.</p>
+        <a href="{{ url_for('dashboard') }}" class="btn-primary">Cari Film</a>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

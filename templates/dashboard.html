@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - MovieMate{% endblock %}
+
+{% block content %}
+<section class="dashboard-header">
+    <div>
+        <span class="badge">Dashboard</span>
+        <h1>{{ title }}</h1>
+        <p>Halo, {{ current_user.username }}. Temukan film favoritmu di sini.</p>
+    </div>
+
+    <form method="GET" action="{{ url_for('dashboard') }}" class="search-form">
+        <input type="text" name="q" value="{{ query }}" placeholder="Cari film...">
+        <button type="submit" class="btn-primary">Cari</button>
+    </form>
+</section>
+
+<section class="movie-grid">
+    {% for movie in movies %}
+    <article class="movie-card">
+        <div class="poster">
+            {% if movie.poster_path %}
+                <img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+            {% else %}
+                <div class="no-poster">No Poster</div>
+            {% endif %}
+
+            <div class="rating">⭐ {{ "%.1f"|format(movie.vote_average or 0) }}</div>
+        </div>
+
+        <div class="movie-info">
+            <h3>{{ movie.title }}</h3>
+            <p class="meta">Rilis: {{ movie.release_date if movie.release_date else "Belum tersedia" }}</p>
+            <p class="overview">
+                {{ movie.overview[:110] }}{% if movie.overview|length > 110 %}...{% endif %}
+            </p>
+
+            <div class="card-actions">
+                <a href="{{ url_for('detail', movie_id=movie.id) }}" class="btn-outline small">Detail</a>
+                <a href="{{ url_for('add_watchlist', movie_id=movie.id) }}" class="btn-primary small">Watchlist</a>
+            </div>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

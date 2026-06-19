@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ movie.title }} - MovieMate{% endblock %}
+
+{% block content %}
+<section class="detail-page">
+    <div class="detail-poster">
+        {% if movie.poster_path %}
+            <img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+        {% endif %}
+    </div>
+
+    <div class="detail-content">
+        <span class="badge">Detail Film</span>
+        <h1>{{ movie.title }}</h1>
+
+        <div class="detail-meta">
+            <span>⭐ {{ "%.1f"|format(movie.vote_average or 0) }}</span>
+            <span>Rilis: {{ movie.release_date if movie.release_date else "Belum tersedia" }}</span>
+            <span>Durasi: {{ movie.runtime if movie.runtime else "-" }} menit</span>
+        </div>
+
+        <p>{{ movie.overview }}</p>
+
+        <a href="{{ url_for('add_watchlist', movie_id=movie.id) }}" class="btn-primary large">
+            Tambahkan ke Watchlist
+        </a>
+
+        <a href="{{ url_for('dashboard') }}" class="btn-outline large">
+            Kembali
+        </a>
+    </div>
+</section>
+{% endblock %}
