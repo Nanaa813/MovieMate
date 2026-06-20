@@ -7,11 +7,11 @@
     <div>
         <span class="badge">Dashboard</span>
         <h1>{{ title }}</h1>
-        <p>Halo, {{ current_user.username }}. Temukan film favoritmu di sini.</p>
+        <p>Hallow, {{ current_user.username }}. Masuk ke dunia hiburan dan temukan film favorit versimu.</p>
     </div>
 
     <form method="GET" action="{{ url_for('dashboard') }}" class="search-form">
-        <input type="text" name="q" value="{{ query }}" placeholder="Cari film...">
+        <input type="text" name="q" value="{{ query }}" placeholder="Jelajahi film favoritmu…">
         <button type="submit" class="btn-primary">Cari</button>
     </form>
 </section>
